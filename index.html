@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Aorael Books</title>
-<meta name="description" content="Aorael Books is a new independent press acquiring its first list — literary fiction, essay collections, and fiction in translation.">
+<meta name="description" content="Aorael Books is a new independent press in Seoul. First title out now: How to Foresee the Future with AI by Wonju Hwangbo — with literary fiction, essays, and fiction in translation to follow.">
 <meta name="theme-color" content="#F7F3EA" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#121010" media="(prefers-color-scheme: dark)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -78,6 +78,7 @@
   a{ color: inherit; }
   ::selection{ background: var(--accent); color: var(--accent-ink); }
   a, button{ -webkit-tap-highlight-color: transparent; }
+  :focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
 
   h1,h2,h3{ font-family: var(--font-display); font-weight: 600; margin: 0; text-wrap: balance; }
 
@@ -174,6 +175,68 @@
   }
   .scroll-cue .line{ width:1.5px; height: 46px; background: linear-gradient(#E7DFD0, transparent); }
 
+  /* ---------- New release ---------- */
+  .new-release{
+    position:relative; overflow:hidden;
+    background: linear-gradient(160deg, #201811 0%, #12100D 60%, #0B0906 100%);
+    color:#F8F3E8;
+  }
+  .new-release::before{
+    content:""; position:absolute; left:-12%; top:50%; transform:translateY(-50%);
+    width:52%; height:82%; pointer-events:none;
+    background: radial-gradient(closest-side, rgba(230,46,0,.30), transparent 72%);
+  }
+  .nr-grid{
+    position:relative; display:grid; grid-template-columns: minmax(220px, .85fr) 1.5fr;
+    gap: clamp(36px,6vw,84px); align-items:center;
+  }
+  .nr-cover{ position:relative; max-width: 380px; margin-inline:auto; width:100%; }
+  .cover-plate{
+    position:relative; border-radius:2px; transform: rotate(-2deg);
+    box-shadow: 0 34px 64px -18px rgba(0,0,0,.7), 0 10px 24px rgba(0,0,0,.42);
+    transition: transform .35s ease;
+  }
+  .nr-cover:hover .cover-plate{ transform: rotate(0deg) translateY(-6px); }
+  .cover-plate img{ border-radius:2px; width:100%; height:auto; }
+  .nr-badge{
+    position:absolute; top:-13px; right:-13px; z-index:2;
+    background: var(--accent); color: var(--accent-ink);
+    font-size:.7rem; font-weight:800; letter-spacing:.11em; text-transform:uppercase;
+    padding:.55em .95em; border-radius:2px;
+    box-shadow: 0 8px 18px rgba(0,0,0,.4);
+  }
+  .cover-fallback{
+    display:none; aspect-ratio: 2/3; border:1.5px dashed rgba(248,243,232,.4); border-radius:2px;
+    align-items:center; justify-content:center; text-align:center; padding:2em;
+    background: rgba(248,243,232,.04);
+  }
+  .cover-fallback b{ display:block; font-family:var(--font-display); font-style:italic; font-weight:500; font-size:1.35rem; color:#FBF7EE; margin-bottom:.6em; }
+  .cover-fallback span{ font-size:.85rem; color:#E7DFD0; }
+  .new-release .kicker{ color:#F2C9B6; }
+  .nr-body h2{ font-size: clamp(1.9rem, 3.2vw, 2.8rem); font-weight:500; font-style:italic; color:#FBF7EE; }
+  .nr-sub{ margin-top:.55em; font-size:1rem; color:#E7DFD0; max-width:54ch; }
+  .nr-author{ margin:1.1em 0 0; font-size:.95rem; color:#E7DFD0; }
+  .nr-author strong{ color:#FBF7EE; }
+  .nr-quote{
+    margin:1.6em 0; padding-left:1.2em; border-left:2px solid var(--accent);
+    font-family:var(--font-display); font-style:italic; font-size:1.08rem; line-height:1.5;
+    color:#F2E7D6; max-width:58ch;
+  }
+  .nr-points{ list-style:none; margin:0; padding:0; display:grid; gap:.55em; }
+  .nr-points li{ padding-left:1.3em; position:relative; color:#D9CFBB; font-size:.95rem; }
+  .nr-points li::before{ content:"—"; position:absolute; left:0; color:var(--accent); }
+  .nr-meta{
+    margin-top:1.7em; display:flex; flex-wrap:wrap; gap:.4em .95em;
+    font-size:.78rem; letter-spacing:.05em; text-transform:uppercase; color:#B7AC97;
+    font-variant-numeric: tabular-nums;
+  }
+  .nr-actions{ display:flex; gap:14px; margin-top:1.8em; flex-wrap:wrap; }
+  .nr-author-bio{
+    margin-top:2em; padding-top:1.5em; border-top:1px solid rgba(248,243,232,.14);
+    font-size:.9rem; color:#C6BCA9; max-width:62ch;
+  }
+  .nr-author-bio strong{ color:#F4EEE2; }
+
   /* ---------- Sections generic ---------- */
   section{ padding: clamp(64px,9vw,120px) 0; }
   .section-head{ max-width: 62ch; margin-bottom: clamp(36px,5vw,64px); }
@@ -215,10 +278,10 @@
   }
   .shelf{ position:absolute; inset:0; display:flex; align-items:flex-end; gap: 10px; padding: clamp(24px,4vw,40px); }
   .shelf span{ flex:1; border-radius: 2px; border: 1.5px dashed var(--line); background: color-mix(in srgb, var(--paper) 55%, transparent); }
-  .shelf span:nth-child(1){ height: 46%; }
-  .shelf span:nth-child(2){ height: 78%; border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
+  .shelf span:nth-child(1){ height: 62%; border-color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); }
+  .shelf span:nth-child(2){ height: 78%; }
   .shelf span:nth-child(3){ height: 30%; }
-  .shelf span:nth-child(4){ height: 62%; }
+  .shelf span:nth-child(4){ height: 52%; }
   .shelf span:nth-child(5){ height: 40%; }
   .coming-soon-body{ padding: clamp(28px,4vw,48px) clamp(24px,4vw,44px) clamp(28px,4vw,48px) 0; display:flex; flex-direction:column; justify-content:center; }
   .coming-soon-body h3{ font-family:var(--font-display); font-weight:500; font-size: clamp(1.3rem,2vw,1.7rem); margin: .3em 0 .5em; }
@@ -299,10 +362,13 @@
     .nav-toggle[aria-expanded="true"]::after{ transform: translateY(-5.5px) rotate(-45deg); }
     .about-grid, .submit-grid, .foot-top{ grid-template-columns: 1fr; }
     .process-list{ grid-template-columns: 1fr; }
+    .nr-grid{ grid-template-columns: 1fr; }
+    .nr-cover{ max-width: 300px; }
+    .new-release::before{ width:100%; height:45%; top:0; left:0; transform:none; }
     .scroll-cue{ display:none; }
     .btn{ min-height: 46px; justify-content:center; }
-    .hero-actions{ flex-direction:column; align-items:stretch; }
-    .hero-actions .btn{ width:100%; }
+    .hero-actions, .nr-actions{ flex-direction:column; align-items:stretch; }
+    .hero-actions .btn, .nr-actions .btn{ width:100%; }
   }
   @media (max-width: 560px){
     .foot-cols{ grid-template-columns: 1fr 1fr; }
@@ -320,8 +386,9 @@
   </a>
   <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#titles">First List</a></li>
+    <li><a href="#new-release">New Release</a></li>
     <li><a href="#about">About</a></li>
+    <li><a href="#titles">First List</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#submissions">Submissions</a></li>
   </ul>
@@ -336,13 +403,56 @@
     <div class="hero-inner">
       <span class="eyebrow">A New Independent Press — Est. 2026</span>
       <h1>Fiction and essays for readers who underline.</h1>
-      <p>Aorael Books is a brand-new press acquiring its first list — voice-driven novels, essay collections, and literature in translation, edited to be reread.</p>
+      <p>Aorael Books is a brand-new Seoul press whose first title is already out — a practical guide to foreseeing the future with AI. Next up: voice-driven novels, essay collections, and literature in translation, edited to be reread.</p>
       <div class="hero-actions">
-        <a class="btn btn-solid" href="#titles">What We're Building</a>
+        <a class="btn btn-solid" href="#new-release">Our First Title</a>
         <a class="btn btn-ghost" href="#about">Read the Manifesto</a>
       </div>
     </div>
     <div class="scroll-cue"><span class="line"></span>Scroll</div>
+  </section>
+
+  <section class="new-release" id="new-release">
+    <div class="wrap nr-grid">
+      <div class="nr-cover reveal">
+        <span class="nr-badge">Out Now</span>
+        <div class="cover-plate">
+          <img src="book-cover.jpg" alt="Book cover — How to Foresee the Future with AI by Wonju Hwangbo" width="683" height="1024" loading="eager" decoding="async"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="cover-fallback">
+            <div>
+              <b>How to Foresee the Future with AI</b>
+              <span>Wonju Hwangbo · Aorael Books<br><br>(book-cover.jpg not found — upload it next to index.html)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nr-body reveal">
+        <span class="kicker">First Title · New Release</span>
+        <h2>How to Foresee the Future with AI</h2>
+        <p class="nr-sub">A Practical Guide to Reading, Exploring, Choosing, and Shaping Tomorrow with Artificial Intelligence</p>
+        <p class="nr-author">by <strong>Wonju Hwangbo, Ph.D.</strong></p>
+        <blockquote class="nr-quote">"The future is not one. It never arrives fully formed — it first appears as a faint signal in the present, and it is made, little by little, by the questions we ask and the choices we make today."</blockquote>
+        <p class="nr-sub">A hands-on guide to futures thinking for the age of artificial intelligence — beyond the old dream of predicting tomorrow. Across ten chapters and five parts, Dr. Hwangbo shows how to read change, imagine many possible futures, and choose the one we want, together with AI. This edition is fully revised for the AI era, expanding the author's earlier book into a method for thinking with AI, not just about it.</p>
+        <ul class="nr-points">
+          <li>Read the signals of change that quietly announce the future</li>
+          <li>Use the core methods — horizon scanning, Delphi, scenario planning, backcasting, cross-impact analysis</li>
+          <li>Work with AI as a thinking partner while keeping human judgment</li>
+          <li>See how AI is reshaping work, learning, health, culture, and relationships</li>
+          <li>Watch AI, energy, and climate change one another's futures</li>
+          <li>Ask the governance question — who decides the future, and for whom</li>
+        </ul>
+        <!-- Price checked 12 Oct 2026: £7.55 on Amazon.co.uk — update manually if it changes -->
+        <div class="nr-meta">
+          <span>170 pages</span><span>English</span><span>10 chapters · 5 parts</span><span>34 figures &amp; diagrams</span><span>Kindle Edition</span><span>11 Oct 2026</span><span>ASIN B0HMMSHKNT</span>
+        </div>
+        <div class="nr-actions">
+          <a class="btn btn-solid" href="https://www.amazon.co.uk/dp/B0HMMSHKNT" target="_blank" rel="noopener">Buy on Amazon — £7.55</a>
+          <a class="btn btn-ghost" href="https://www.amazon.co.uk/dp/B0HMMSHKNT" target="_blank" rel="noopener">Read free with Kindle Unlimited</a>
+        </div>
+        <p class="nr-author-bio"><strong>About the author.</strong> Wonju Hwangbo, Ph.D. — author, futures-studies scholar, and CEO of Aorael. Dr. Hwangbo has taught futures studies at Ewha Womans University and works across AI strategy and technology policy.</p>
+      </div>
+    </div>
   </section>
 
   <section class="about" id="about">
@@ -350,13 +460,13 @@
       <div class="reveal">
         <span class="kicker">The Manifesto</span>
         <p class="pull">"We publish for the reader who underlines — books built to hold up on the second pass."</p>
-        <p class="body">Aorael launched in 2026 out of a shared complaint: most manuscripts get edited for speed, and the ones we love most need time instead. We're a new press — no backlist yet, just three editors and a clear idea of the kind of books we want to spend the next decade publishing.</p>
-        <p class="body">Right now we're acquiring our first list: literary fiction, essay collections, and fiction in translation. Every manuscript we take on gets two structural passes and a full line edit, done in the room with its author, long before it goes near a printer.</p>
+        <p class="body">Aorael launched in 2026 out of a shared complaint: most manuscripts get edited for speed, and the ones we love most need time instead. We're a new press — no long backlist, just a clear idea of the kind of books we want to spend the next decade publishing.</p>
+        <p class="body">Every manuscript we take on gets two structural passes and a full line edit, done in the room with its author, long before it goes near a printer.</p>
       </div>
       <div class="stats reveal">
         <div class="stat"><b>2026</b><span>Founded</span></div>
-        <div class="stat"><b>0</b><span>Titles published — we're brand new</span></div>
-        <div class="stat"><b>Open</b><span>Currently acquiring our first list</span></div>
+        <div class="stat"><b>1</b><span>First title out now — more in reading</span></div>
+        <div class="stat"><b>Open</b><span>Currently acquiring for the next list</span></div>
       </div>
     </div>
   </section>
@@ -365,8 +475,8 @@
     <div class="wrap">
       <div class="section-head reveal">
         <span class="kicker">First List</span>
-        <h2>Nothing in print yet — and that's the point.</h2>
-        <p>Aorael launched in 2026. We're reading now and acquiring our first list, taking the time most manuscripts don't get. The first titles will appear here the moment they're signed.</p>
+        <h2>The shelf has its first spine.</h2>
+        <p>How to Foresee the Future with AI went live on 11 October 2026. We're reading for the books that will stand beside it — the shelf fills slowly, on purpose.</p>
       </div>
       <div class="coming-soon reveal">
         <div class="coming-soon-art">
@@ -374,9 +484,9 @@
         </div>
         <div class="coming-soon-body">
           <span class="kicker">Status</span>
-          <h3>Currently acquiring</h3>
-          <p>No titles are confirmed yet — we're reading agented submissions and manuscripts from our open call. If you're the one we sign, this shelf gets its first spine.</p>
-          <a class="btn btn-solid" href="#submissions">See what we're looking for</a>
+          <h3>One out, more in reading</h3>
+          <p>The first title is available on Amazon now. Everything else on this shelf is being decided the way we said — slowly, in the room with the author.</p>
+          <a class="btn btn-solid" href="#new-release">Meet the first title</a>
         </div>
       </div>
     </div>
@@ -423,7 +533,7 @@
           <li>Fiction in translation, with a sample translated chapter</li>
           <li>Poetry manuscripts, occasionally</li>
         </ul>
-        <div class="submit-note">Send a one-page query, the first 20 pages, and a two-paragraph synopsis as a single PDF to <a href="mailto:partners@aorael.com">partners@aorael.com</a>. We aim to respond within twelve weeks.</div>
+        <div class="submit-note">Send a one-page query, the first 20 pages, and a two-paragraph synopsis as a single PDF to <a href="/cdn-cgi/l/email-protection#e69687949288839495a687899487838ac885898b"><span class="__cf_email__" data-cfemail="b7c7d6c5c3d9d2c5c4f7d6d8c5d6d2db99d4d8da">[email&#160;protected]</span></a>. We aim to respond within twelve weeks.</div>
       </div>
     </div>
   </section>
@@ -444,6 +554,7 @@
           <div>
             <h4>Explore</h4>
             <ul>
+              <li><a href="#new-release">New Release</a></li>
               <li><a href="#titles">First List</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#process">Process</a></li>
@@ -453,7 +564,7 @@
           <div>
             <h4>Connect</h4>
             <ul>
-              <li><a href="mailto:partners@aorael.com">partners@aorael.com</a></li>
+              <li><a href="/cdn-cgi/l/email-protection#4b3b2a393f252e39380b2a24392a2e2765282426"><span class="__cf_email__" data-cfemail="5727362523393225241736382536323b7934383a">[email&#160;protected]</span></a></li>
               <li><a href="#submissions">Submissions</a></li>
               <li>Instagram</li>
               <li>Twitter / X</li>
@@ -472,7 +583,7 @@
   </footer>
 </main>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function(){
   // Mobile nav toggle
   var toggle = document.getElementById('navToggle');
@@ -605,5 +716,6 @@
   new MutationObserver(applyTheme).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
 })();
 </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4bc70e2c01a94c73b74392e4234840661791215815920" integrity="sha512-L0ha0OXavK/8okipN9F8BtP84dg9DUhPERbBXzwI6dgTA55d2+yweo3pn5CSFYs45/r8md2+xvUPtTdvTNRfjA==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
